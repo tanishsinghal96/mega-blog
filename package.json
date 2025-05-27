@@ -1,0 +1,20 @@
+{
+  "name": "mega_project",
+  "version": "1.0.0",
+  "description": "mza aa jayega bna kr",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "radhe",
+    "krishn"
+  ],
+  "author": "Tanish singhal",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3"
+  }
+}
