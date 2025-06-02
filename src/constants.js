@@ -1,1 +1,1 @@
-export const DB_NAME="megablogdb"
+export const DB_NAME="megablogdb"//need at the time of creation

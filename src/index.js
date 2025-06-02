@@ -3,13 +3,22 @@ import dotenv from "dotenv"
 dotenv.config({
     path:'./env'
 })
-
-
 import connectdb from "./db/index.js"//sometimes need to give the name of index file also
-import express from "express"
-const app=express()
-  
-connectdb();
+import {app} from "./app.js"
+//we know that async function return the promise so we have to handle it 
+connectdb()
+.then (()=>{
+    app.on("error",(error)=>{
+        console.log("error in server",error)
+        throw error;
+    })
+    app.listen(process.env.PORT || 8000,()=>{
+        console.log(`our app is listening on the ${process.env.PORT}`)
+    })
+})
+.catch((err)=>{
+    console.log(err);   
+})
 
 
 
