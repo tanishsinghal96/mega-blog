@@ -27,6 +27,14 @@ import userRouter from "./routes/user.routes.js"
 
 
 //use the middlewared to use the routing 
-app.use("/api/v1/users",userRouter)
-
+app.use("/api/v1/users",userRouter)   //using as a middleware
+app.use((err, req, res, next) => {
+  res.status(err.statusCode || 500).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+    errors: err.errors || [],
+    data: null,
+    stack: process.env.NODE_ENV === "development" ? err.stack : undefined
+  });
+}); 
 export {app}

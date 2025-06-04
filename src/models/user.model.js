@@ -18,6 +18,7 @@ const Userschema = new Schema(
       unique: true,
       lowercase: true,
       trim: true,
+      index:true,
     },
     fullName: {
       type: String,
@@ -79,7 +80,7 @@ Userschema.methods.generateAccessToken = async function () {
 };
 
 //geenrate the refresh token with few data and high expiry date
-userSchema.methods.generateRefreshToken = function () {
+Userschema.methods.generateRefreshToken = function () {
   return jwt.sign(
     {
       _id: this._id,
