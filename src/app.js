@@ -4,7 +4,8 @@ import cookieParser from "cookie-parser"
 const app=express()
 app.use(cors({
     origin:process.env.CORS_ORIGIN,
-    credentials:true
+    // This must be matched on the frontend too. When you make a request with credentials: 'include' from the frontend, the backend must have credentials: true.
+    credentials:true//Allows the frontend to send cookies, authorization headers, or TLS client certificates along with the requests.
 }))
 //It parses that raw string into a proper object like:And stores it in req.body so you can use it easily in your route handler.Otherwise, req.body will be undefined — you won’t be able to access the sent data.
 app.use(express.json({
