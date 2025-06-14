@@ -2,12 +2,13 @@ import jwt from "jsonwebtoken"
 import { asyncHandler } from "../utils/asyncHandler.js"
 import { ApiError } from "../utils/apiError.js";
 import { User } from "../models/user.model.js";
+//if we don't need the response then we can use the underscore(_) in place of res
 export const  authMiddleware=asyncHandler(async (req,_,next)=>{  
     //take the access token from the cookie or headers(for phone users)
     try {
-        const accessToken=req.cookies?.accessToken || req.headers("authentication")?.replace("Baerer ","");
+        const accessToken=req.cookies?.accessToken || req.headers["authentication"]?.replace("Bearer ","");
         if(!accessToken){
-            throw new ApiError(400,"unathorized user")
+            throw new ApiError(400,"unauthorized user")
         }
     
         //decode the access the token 

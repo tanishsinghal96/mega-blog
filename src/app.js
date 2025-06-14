@@ -28,6 +28,14 @@ import userRouter from "./routes/user.routes.js"
 
 //use the middlewared to use the routing 
 app.use("/api/v1/users",userRouter)   //using as a middleware
+
+
+
+
+
+
+
+
 app.use((err, req, res, next) => {
   res.status(err.statusCode || 500).json({
     success: false,
